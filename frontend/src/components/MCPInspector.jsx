@@ -29,13 +29,14 @@ export default function MCPInspector() {
 
   return (
     <div className="space-y-6">
-      <div className="glass-panel p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      {/* Title Header Card */}
+      <div className="clean-card p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Database className="w-6 h-6 text-indigo-400" />
+          <h2 className="text-xl font-extrabold text-slate-900 font-heading flex items-center gap-2">
+            <Database className="w-6 h-6 text-orange-500" />
             MCP Protocol Server Tools & RAG Policy Registry
           </h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             Standardized Model Context Protocol (MCP) server tools exposed for agent execution alongside RAG policy documentation.
           </p>
         </div>
@@ -44,25 +45,25 @@ export default function MCPInspector() {
       {/* Tools Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* MCP Tools Column */}
-        <div className="glass-panel p-6 space-y-4">
-          <h3 className="text-base font-semibold text-white flex items-center gap-2 border-b border-white/10 pb-3">
-            <Cpu className="w-5 h-5 text-indigo-400" />
+        <div className="clean-card p-6 space-y-4">
+          <h3 className="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <Cpu className="w-5 h-5 text-orange-500" />
             Registered MCP Server Tools
           </h3>
 
           {loading ? (
-            <p className="text-xs text-slate-400">Loading tools from FastMCP Server...</p>
+            <p className="text-xs text-slate-500">Loading tools from FastMCP Server...</p>
           ) : (
             <div className="space-y-3">
               {tools.map((t, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-2">
+                <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm font-bold text-indigo-300">{t.name}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">MCP Tool</span>
+                    <span className="font-mono text-sm font-bold text-slate-900">{t.name}</span>
+                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-700 font-bold border border-orange-200">MCP Tool</span>
                   </div>
-                  <p className="text-xs text-slate-300">{t.description}</p>
-                  <div className="pt-2 border-t border-white/5 flex gap-2 font-mono text-[11px] text-slate-400">
-                    <span className="text-slate-500">Params:</span> {Object.keys(t.parameters || {}).join(", ")}
+                  <p className="text-xs text-slate-600 leading-relaxed">{t.description}</p>
+                  <div className="pt-2 border-t border-slate-200/60 flex gap-2 font-mono text-[11px] text-slate-500">
+                    <span className="text-slate-400">Params:</span> {Object.keys(t.parameters || {}).join(", ")}
                   </div>
                 </div>
               ))}
@@ -71,17 +72,17 @@ export default function MCPInspector() {
         </div>
 
         {/* RAG Knowledge Base Column */}
-        <div className="glass-panel p-6 space-y-4">
-          <h3 className="text-base font-semibold text-white flex items-center gap-2 border-b border-white/10 pb-3">
-            <BookOpen className="w-5 h-5 text-emerald-400" />
+        <div className="clean-card p-6 space-y-4">
+          <h3 className="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <BookOpen className="w-5 h-5 text-emerald-600" />
             RAG Knowledge Base Policy Sections
           </h3>
 
           <div className="space-y-3">
             {policies.map((p, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-1.5">
-                <div className="font-semibold text-xs text-emerald-400">{p.section}</div>
-                <p className="text-xs text-slate-300 leading-relaxed">{p.content}</p>
+              <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                <div className="font-bold text-xs text-emerald-700">{p.section}</div>
+                <p className="text-xs text-slate-600 leading-relaxed">{p.content}</p>
               </div>
             ))}
           </div>
