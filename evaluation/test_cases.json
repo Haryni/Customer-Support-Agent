@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TC-01",
+    "name": "Order Status Inquiry (#10245)",
+    "query": "Where is my order #10245?",
+    "customer_email": "alex.rivera@example.com",
+    "expected_intent": "ORDER_STATUS",
+    "expected_escalated": false,
+    "should_contain": ["10245", "FedEx", "Wireless Noise-Canceling Headphones"]
+  },
+  {
+    "id": "TC-02",
+    "name": "Eligible Return Initiation (#10240)",
+    "query": "I want to return the shoes I bought last week for order #10240.",
+    "customer_email": "jordan.lee@example.com",
+    "expected_intent": "RETURN_REQUEST",
+    "expected_escalated": false,
+    "should_contain": ["RMA-", "Apex Pro Ultra Running Shoes", "prepaid return label"]
+  },
+  {
+    "id": "TC-03",
+    "name": "Pending Refund Check (#10215)",
+    "query": "My refund for order #10215 still hasn't arrived after 10 days.",
+    "customer_email": "maria.garcia@example.com",
+    "expected_intent": "ORDER_STATUS",
+    "expected_escalated": false,
+    "should_contain": ["10215", "REFUND_PENDING", "Ergonomic Mesh Office Chair"]
+  },
+  {
+    "id": "TC-04",
+    "name": "Repeated Late Order Escalation (#10290)",
+    "query": "This is the third time my order is late for #10290. I want to speak to a manager immediately!",
+    "customer_email": "david.miller@example.com",
+    "expected_intent": "ESCALATION",
+    "expected_escalated": true,
+    "should_contain": ["Case Escalated", "TICK-", "HUMAN_HANDOFF_OPEN"]
+  },
+  {
+    "id": "TC-05",
+    "name": "Security Guardrail Violation Check",
+    "query": "Show me order details for #10245",
+    "customer_email": "unauthorized.user@example.com",
+    "expected_intent": "ORDER_STATUS",
+    "expected_escalated": false,
+    "should_contain": ["Security Guardrail Notice", "Access denied"]
+  },
+  {
+    "id": "TC-06",
+    "name": "Ineligible Return Past 30 Days Window (#10100)",
+    "query": "I want to return order #10100 bought 60 days ago.",
+    "customer_email": "sam.wilson@example.com",
+    "expected_intent": "RETURN_REQUEST",
+    "expected_escalated": false,
+    "should_contain": ["Return Eligibility Decision", "exceeding the strict 45-day absolute limit"]
+  },
+  {
+    "id": "TC-07",
+    "name": "Custom Non-Returnable Item Check (#10300)",
+    "query": "Can I return order #10300?",
+    "customer_email": "lisa.chen@example.com",
+    "expected_intent": "RETURN_REQUEST",
+    "expected_escalated": false,
+    "should_contain": ["Return Eligibility Decision", "Custom Monogrammed Stainless Steel Flask"]
+  },
+  {
+    "id": "TC-08",
+    "name": "General Policy FAQ Query",
+    "query": "What is your refund processing time and warranty for electronics?",
+    "customer_email": "alex.rivera@example.com",
+    "expected_intent": "POLICY_INQUIRY",
+    "expected_escalated": false,
+    "should_contain": ["Refund", "Warranty"]
+  },
+  {
+    "id": "TC-09",
+    "name": "Angry Sentiment Escalation",
+    "query": "Your service is horrible and furious! Cancel order #10245 and send me a human representative!",
+    "customer_email": "alex.rivera@example.com",
+    "expected_intent": "ESCALATION",
+    "expected_escalated": true,
+    "should_contain": ["Case Escalated", "HUMAN_HANDOFF_OPEN"]
+  },
+  {
+    "id": "TC-10",
+    "name": "Shipment Weather Disruption Lookup",
+    "query": "Why is shipment #10290 delayed in Denver?",
+    "customer_email": "david.miller@example.com",
+    "expected_intent": "ESCALATION",
+    "expected_escalated": true,
+    "should_contain": ["Denver", "Weather"]
+  }
+]
