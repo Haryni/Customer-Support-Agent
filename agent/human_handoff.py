@@ -2,8 +2,9 @@ import sqlite3
 import os
 import json
 import uuid
+from datetime import datetime
 from agent.state import AgentState
-from mcp_server.tools import track_shipment
+from mcp_server.mcp_client import mcp_track_shipment as track_shipment
 
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "ecommerce.db")
 
@@ -56,7 +57,7 @@ def human_handoff_node(state: AgentState) -> dict:
         "actions_taken": actions_taken_str,
         "escalation_reason": f"Escalation triggered due to {state.sentiment} sentiment and {state.late_count} order delays. {tracking_ctx}",
         "recommended_action": rec_action,
-        "created_at": "2026-09-27 16:30:00"
+        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
     # Save to SQLite escalated_tickets table
