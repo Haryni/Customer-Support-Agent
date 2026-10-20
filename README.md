@@ -1,4 +1,4 @@
-# 🛒 ApexCart AI — E-Commerce Customer Support Agent
+# 🛒  ApexCart AI — E-Commerce Customer Support Agent
 
 > **Task 7: Customer Support Agent**  
 > **Domain**: E-Commerce  
